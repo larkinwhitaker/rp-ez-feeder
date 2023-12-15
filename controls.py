@@ -80,7 +80,7 @@ def loop(isEditing):
         key = keypad.getKey()
         if(key == keypad.NULL):
             continue
-        elif key == 'A'
+        elif key == 'A':
             if not isEditing:
                 isEditing = True
             elif not is_valid_military_time(timeSetting):
@@ -92,20 +92,20 @@ def loop(isEditing):
                 updateFeedingTime(hour, minute)
                 isEditing = False
             
-        elif key == 'B'
+        elif key == 'B':
             # cancel select time
             isEditing = False
             timeSetting = ''
 
-        elif key == 'C'
+        elif key == 'C':
             # clear select time
             timeSetting = ''
 
-        elif key == 'D'
+        elif key == 'D':
             # enable/disable
             toggleEnabled()
 
-        else
+        else:
             if len(timeSetting) >= 4:
                 print ("You Pressed Ignored Key: {key}")
                 continue

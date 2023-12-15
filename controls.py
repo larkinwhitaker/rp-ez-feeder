@@ -23,7 +23,11 @@ currentMessage = ''
 def display(message):
     lcd.clear()
     lcd.setCursor(0,0) # set cursor position
-    lcd.message(message)
+    if len(message) <= 16:
+        lcd.message(message)
+    else:
+        lcd.message(message[0:15])
+        lcd.message(message[16:])
     print(f'displaying message: {message}')
 
 def is_valid_military_time(input_string):

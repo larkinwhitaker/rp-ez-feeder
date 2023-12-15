@@ -83,7 +83,7 @@ def loop(isEditing, currentMessage):
         timeSetting = ''
         key = keypad.getKey()
         if(key == keypad.NULL):
-            continue
+            # do nothing
         elif key == 'A':
             if not isEditing:
                 isEditing = True

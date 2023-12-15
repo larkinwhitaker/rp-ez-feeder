@@ -19,6 +19,7 @@ colsPins = [19,15,13,11]
 
 isEditing = False
 currentMessage = ''
+timeSetting = ''
 
 def display(message):
     lcd.clear()
@@ -56,15 +57,15 @@ def displayedEditTime(timeStr):
     if len(timeStr) == 0:
         return '00:00'
     elif len(timeStr) == 1:
-        return '{military_time[:1]}0:00'
+        return f'{military_time[:1]}0:00'
     elif len(timeStr) == 2:
-        return '{military_time[:2]}:00'
+        return f'{military_time[:2]}:00'
     elif len(timeStr) == 3:
-        return '{military_time[:2]}:{military_time[:-1]}0'
+        return f'{military_time[:2]}:{military_time[:-1]}0'
     else:
-        return '{military_time[:2]}:{military_time[:-2]}'
+        return f'{military_time[:2]}:{military_time[:-2]}'
 
-def loop(isEditing, currentMessage):
+def loop(isEditing, timeSetting, currentMessage):
     keypad = Keypad.Keypad(keys,rowsPins,colsPins,ROWS,COLS) #creat Keypad object
     keypad.setDebounceTime(50)
     mcp.output(3,1) # turn on LCD backlight 
@@ -94,7 +95,6 @@ def loop(isEditing, currentMessage):
                     display(newMessage)
                     currentMessage = newMessage
 
-        timeSetting = ''
         key = keypad.getKey()
         if key == 'A':
             if not isEditing:
@@ -156,6 +156,6 @@ if __name__ == '__main__':
     print ("Program is starting ...")
 
     try: 
-        loop(isEditing, currentMessage)
+        loop(isEditing, timeSetting, currentMessage)
     except KeyboardInterrupt:
         destroy()

@@ -18,6 +18,7 @@ rowsPins = [12,16,18,22]
 colsPins = [19,15,13,11]
 
 isEditing = False
+currentMessage = ''
 
 def display(message, currentMessage):
     if message != currentMessage:
@@ -25,7 +26,7 @@ def display(message, currentMessage):
         lcd.setCursor(0,0) # set cursor position
         lcd.message(message)
         currentMessage = message
-        print("displaying message: {message}")
+        print('displaying message: {message}')
 
 def is_valid_military_time(input_string):
     pattern = r'^([01]?[0-9]|2[0-3])[0-5][0-9]$'
@@ -61,12 +62,11 @@ def displayedEditTime(timeStr):
     else:
         return '{military_time[:2]}:{military_time[:-2]}'
 
-def loop(isEditing):
+def loop(isEditing, currentMessage):
     keypad = Keypad.Keypad(keys,rowsPins,colsPins,ROWS,COLS) #creat Keypad object
     keypad.setDebounceTime(50)
     mcp.output(3,1) # turn on LCD backlight 
     lcd.begin(16,2) # set number of LCD lines and columns
-    currentMessage = ''
 
     while(True):
         settings = getSettings()
@@ -139,6 +139,6 @@ if __name__ == '__main__':
     print ("Program is starting ...")
 
     try: 
-        loop(isEditing)
+        loop(isEditing, currentMessage)
     except KeyboardInterrupt:
         destroy()

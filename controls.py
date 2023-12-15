@@ -18,6 +18,7 @@ rowsPins = [12,16,18,22]
 colsPins = [19,15,13,11]
 
 isEditing = False
+isInvalid = False
 currentMessage = ''
 timeSetting = ''
 
@@ -65,7 +66,7 @@ def displayedEditTime(timeStr):
     else:
         return f'{timeStr[:2]}:{timeStr[-2:]}'
 
-def loop(isEditing, timeSetting, currentMessage):
+def loop(isInvalid, isEditing, timeSetting, currentMessage):
     keypad = Keypad.Keypad(keys,rowsPins,colsPins,ROWS,COLS) #creat Keypad object
     keypad.setDebounceTime(50)
     mcp.output(3,1) # turn on LCD backlight 
@@ -75,7 +76,7 @@ def loop(isEditing, timeSetting, currentMessage):
         settings = getSettings()
         if isEditing:
             newMessage = 'Feed at: '+displayedEditTime(timeSetting)
-            if newMessage != currentMessage:
+            if not isInvalid and newMessage != currentMessage:
                 display(newMessage)
                 currentMessage = newMessage
         else:
@@ -97,10 +98,14 @@ def loop(isEditing, timeSetting, currentMessage):
 
         key = keypad.getKey()
         if key == 'A':
-            if not isEditing:
+            if isInvalid:
+                isInvalid = False
+                timeSetting = ''
+            elif not isEditing:
                 isEditing = True
             elif not is_valid_military_time(timeSetting):
                 newMessage = 'Invalid time, please clear & try again'
+                isInvalid = True
                 if newMessage != currentMessage:
                     display(newMessage)
                     currentMessage = newMessage
@@ -157,6 +162,6 @@ if __name__ == '__main__':
     print ("Program is starting ...")
 
     try: 
-        loop(isEditing, timeSetting, currentMessage)
+        loop(isInvalid, isEditing, timeSetting, currentMessage)
     except KeyboardInterrupt:
         destroy()

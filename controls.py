@@ -117,7 +117,8 @@ def destroy():
     lcd.clear()
     GPIO.cleanup()
 
-PCF8574_address = 0x27 # I2C address of the PCF8574 chip. PCF8574A_address = 0x3F # I2C address of the PCF8574A chip. # Create PCF8574 GPIO adapter.
+PCF8574_address = 0x27  # I2C address of the PCF8574 chip.
+PCF8574A_address = 0x3F  # I2C address of the PCF8574A chip.
 try:
     mcp = PCF8574_GPIO(PCF8574_address)
 except:

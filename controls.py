@@ -82,9 +82,7 @@ def loop(isEditing, currentMessage):
 
         timeSetting = ''
         key = keypad.getKey()
-        if(key == keypad.NULL):
-            # do nothing
-        elif key == 'A':
+        if key == 'A':
             if not isEditing:
                 isEditing = True
             elif not is_valid_military_time(timeSetting):
@@ -109,12 +107,13 @@ def loop(isEditing, currentMessage):
             # enable/disable
             toggleEnabled()
 
-        else:
+        elif(key != keypad.NULL):
             if len(timeSetting) >= 4:
-                print ("You Pressed Ignored Key: {key}")
+                print (f"You Pressed Ignored Key: {key}")
                 continue
             timeSetting = "{timeSetting}{key}"
-            print ("You Pressed Key: {key}")
+            print (f"You Pressed Key: {key}")
+
         print(f'current: {currentMessage}')
 
 

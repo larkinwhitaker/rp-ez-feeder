@@ -26,7 +26,7 @@ def display(message, currentMessage):
         lcd.setCursor(0,0) # set cursor position
         lcd.message(message)
         currentMessage = message
-        print('displaying message: {message}')
+        print(f'displaying message: {message}, current: {currentMessage}')
 
 def is_valid_military_time(input_string):
     pattern = r'^([01]?[0-9]|2[0-3])[0-5][0-9]$'

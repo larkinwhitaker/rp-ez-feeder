@@ -129,7 +129,7 @@ def loop(isEditing, timeSetting, currentMessage):
                 print (f"You Pressed Ignored Key: {key}")
                 continue
             timeSetting = f"{timeSetting}{key}"
-            print (f"You Pressed Key: {key}")
+            print (f"You Pressed Key: {key}, time setting: {timeSetting}")
 
         # print(f'current: {currentMessage}')
 

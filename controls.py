@@ -61,9 +61,9 @@ def displayedEditTime(timeStr):
     elif len(timeStr) == 2:
         return f'{timeStr[:2]}:00'
     elif len(timeStr) == 3:
-        return f'{timeStr[:2]}:{timeStr[:-1]}0'
+        return f'{timeStr[:2]}:{timeStr[-1:]}0'
     else:
-        return f'{timeStr[:2]}:{timeStr[:-2]}'
+        return f'{timeStr[:2]}:{timeStr[-2:]}'
 
 def loop(isEditing, timeSetting, currentMessage):
     keypad = Keypad.Keypad(keys,rowsPins,colsPins,ROWS,COLS) #creat Keypad object

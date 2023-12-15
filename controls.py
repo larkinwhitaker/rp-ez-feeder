@@ -74,6 +74,7 @@ def loop(isInvalid, isEditing, timeSetting, currentMessage):
 
     while(True):
         settings = getSettings()
+        print(settings)
         if isEditing:
             newMessage = 'Feed at: '+displayedEditTime(timeSetting)
             if not isInvalid and newMessage != currentMessage:
@@ -103,6 +104,7 @@ def loop(isInvalid, isEditing, timeSetting, currentMessage):
                 timeSetting = ''
             elif not isEditing:
                 isEditing = True
+                isInvalid = False
             elif not is_valid_military_time(displayedEditTime(timeSetting)):
                 newMessage = 'Invalid time   Try again'
                 isInvalid = True
@@ -116,6 +118,7 @@ def loop(isInvalid, isEditing, timeSetting, currentMessage):
                 updateFeedingTime(hour, minute)
                 timeSetting = ''
                 isEditing = False
+                isInvalid = False
             
         elif key == 'B':
             # cancel select time

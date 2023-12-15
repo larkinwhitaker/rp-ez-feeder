@@ -86,7 +86,7 @@ def loop(isInvalid, isEditing, timeSetting, currentMessage):
                 if newMessage != currentMessage:
                     display(newMessage)
                     currentMessage = newMessage
-            elif not settings['feed_at_hour'] or not settings['feed_at_minute']:
+            elif settings['feed_at_hour'] != None and settings['feed_at_minute'] != None:
                 newMessage = "Press A to      select time"
                 if newMessage != currentMessage:
                     display(newMessage)

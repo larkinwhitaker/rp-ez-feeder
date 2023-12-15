@@ -74,7 +74,7 @@ def loop(isEditing, timeSetting, currentMessage):
     while(True):
         settings = getSettings()
         if isEditing:
-            newMessage = displayedEditTime(timeSetting)
+            newMessage = 'Feed at: '+displayedEditTime(timeSetting)
             if newMessage != currentMessage:
                 display(newMessage)
                 currentMessage = newMessage

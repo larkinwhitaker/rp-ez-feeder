@@ -127,7 +127,7 @@ def loop(isEditing, currentMessage):
             timeSetting = "{timeSetting}{key}"
             print (f"You Pressed Key: {key}")
 
-        print(f'current: {currentMessage}')
+        # print(f'current: {currentMessage}')
 
 
 def destroy():

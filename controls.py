@@ -33,7 +33,7 @@ def display(message):
     print(f'displaying message: {message}')
 
 def is_valid_military_time(input_string):
-    pattern = r'^([01]?[0-9]|2[0-3])[0-5][0-9]$'
+    pattern = r'^([01]?[0-9]|2[0-3]):[0-5][0-9]$'
     return bool(re.match(pattern, input_string))
 
 def parse_hour(military_time):

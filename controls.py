@@ -114,8 +114,8 @@ def loop(isInvalid, isEditing, timeSetting, currentMessage):
             else:
                 # save time, end editing
                 actualTime = displayedEditTime(timeSetting).replace(":", "")
-                minute = parse_minute(timeSetting)
-                hour = parse_hour(timeSetting)
+                minute = parse_minute(actualTime)
+                hour = parse_hour(actualTime)
                 updateFeedingTime(hour, minute)
                 timeSetting = ''
                 isEditing = False

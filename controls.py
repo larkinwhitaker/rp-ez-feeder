@@ -74,7 +74,7 @@ def loop(isInvalid, isEditing, timeSetting, currentMessage):
 
     while(True):
         settings = getSettings()
-        print(settings)
+        # print(settings)
         if isEditing:
             newMessage = 'Feed at: '+displayedEditTime(timeSetting)
             if not isInvalid and newMessage != currentMessage:

@@ -93,7 +93,7 @@ def loop(isInvalid, isEditing, timeSetting, currentMessage):
                     currentMessage = newMessage
             else:
                 minutes = settings['feed_at_minute']
-                if minutes == 0
+                if minutes == 0:
                     minutes = '00'
                 newMessage = f"Feeds at {settings['feed_at_hour']}:{minutes}"
                 if newMessage != currentMessage:

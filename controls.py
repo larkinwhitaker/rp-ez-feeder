@@ -103,7 +103,7 @@ def loop(isInvalid, isEditing, timeSetting, currentMessage):
                 timeSetting = ''
             elif not isEditing:
                 isEditing = True
-            elif not is_valid_military_time(timeSetting):
+            elif not is_valid_military_time(displayedEditTime(timeSetting)):
                 newMessage = 'Invalid time   Try again'
                 isInvalid = True
                 if newMessage != currentMessage:

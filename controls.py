@@ -85,7 +85,7 @@ def loop(isEditing):
                 isEditing = True
             elif not is_valid_military_time(timeSetting):
                 display('Invalid time, please clear & try again')
-            else
+            else:
                 # save time, end editing
                 minute = parse_minute(timeSetting)
                 hour = parse_hour(timeSetting)

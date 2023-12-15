@@ -19,10 +19,13 @@ colsPins = [19,15,13,11]
 
 isEditing = False
 
-def display(message):
+def display(message, currentMessage):
+    if message == currentMessage:
+        return
     lcd.clear()
     lcd.setCursor(0,0) # set cursor position
     lcd.message(message)
+    currentMessage = message
 
 def is_valid_military_time(input_string):
     pattern = r'^([01]?[0-9]|2[0-3])[0-5][0-9]$'
@@ -63,18 +66,19 @@ def loop(isEditing):
     keypad.setDebounceTime(50)
     mcp.output(3,1) # turn on LCD backlight 
     lcd.begin(16,2) # set number of LCD lines and columns
+    currentMessage = ''
 
     while(True):
         settings = getSettings()
         if isEditing:
-            display(displayedEditTime(timeSetting))
+            display(displayedEditTime(timeSetting), currentMessage)
         else:
             if not settings['enabled']:
-                display("Disabled")
+                display("Disabled", currentMessage)
             elif not settings['feed_at_hour'] or not settings['feed_at_minute']:
-                display("Select time")
+                display("Select time", currentMessage)
             else:
-                display("{settings['feed_at_hour']}:{settings['feed_at_minute']}")
+                display("{settings['feed_at_hour']}:{settings['feed_at_minute']}", currentMessage)
 
         timeSetting = ''
         key = keypad.getKey()
@@ -84,7 +88,7 @@ def loop(isEditing):
             if not isEditing:
                 isEditing = True
             elif not is_valid_military_time(timeSetting):
-                display('Invalid time, please clear & try again')
+                display('Invalid time, please clear & try again', currentMessage)
             else:
                 # save time, end editing
                 minute = parse_minute(timeSetting)

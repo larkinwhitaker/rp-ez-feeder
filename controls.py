@@ -128,7 +128,7 @@ def loop(isEditing, timeSetting, currentMessage):
             if len(timeSetting) >= 4:
                 print (f"You Pressed Ignored Key: {key}")
                 continue
-            timeSetting = "{timeSetting}{key}"
+            timeSetting = f"{timeSetting}{key}"
             print (f"You Pressed Key: {key}")
 
         # print(f'current: {currentMessage}')

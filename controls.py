@@ -120,11 +120,13 @@ def loop(isInvalid, isEditing, timeSetting, currentMessage):
         elif key == 'B':
             # cancel select time
             isEditing = False
+            isInvalid = False
             timeSetting = ''
 
         elif key == 'C':
             # clear select time
             timeSetting = ''
+            isInvalid = False
 
         elif key == 'D':
             # enable/disable

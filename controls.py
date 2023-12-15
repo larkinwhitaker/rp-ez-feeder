@@ -26,7 +26,6 @@ def display(message, currentMessage):
         lcd.message(message)
         currentMessage = message
         print("displaying message: {message}")
-    else:
 
 def is_valid_military_time(input_string):
     pattern = r'^([01]?[0-9]|2[0-3])[0-5][0-9]$'

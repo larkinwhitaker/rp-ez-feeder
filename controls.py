@@ -20,13 +20,11 @@ colsPins = [19,15,13,11]
 isEditing = False
 currentMessage = ''
 
-def display(message, currentMessage):
-    if message != currentMessage:
-        lcd.clear()
-        lcd.setCursor(0,0) # set cursor position
-        lcd.message(message)
-        currentMessage = message
-        print(f'displaying message: {message}, current: {currentMessage}')
+def display(message):
+    lcd.clear()
+    lcd.setCursor(0,0) # set cursor position
+    lcd.message(message)
+    print(f'displaying message: {message}')
 
 def is_valid_military_time(input_string):
     pattern = r'^([01]?[0-9]|2[0-3])[0-5][0-9]$'
@@ -71,14 +69,26 @@ def loop(isEditing, currentMessage):
     while(True):
         settings = getSettings()
         if isEditing:
-            display(displayedEditTime(timeSetting), currentMessage)
+            newMessage = displayedEditTime(timeSetting)
+            if newMessage != currentMessage:
+                display(newMessage)
+                currentMessage = newMessage
         else:
             if not settings['enabled']:
-                display("Disabled", currentMessage)
+                newMessage = "Disabled"
+                if newMessage != currentMessage:
+                    display(newMessage)
+                    currentMessage = newMessage
             elif not settings['feed_at_hour'] or not settings['feed_at_minute']:
-                display("Select time", currentMessage)
+                newMessage = "Select time"
+                if newMessage != currentMessage:
+                    display(newMessage)
+                    currentMessage = newMessage
             else:
-                display("{settings['feed_at_hour']}:{settings['feed_at_minute']}", currentMessage)
+                newMessage = f"{settings['feed_at_hour']}:{settings['feed_at_minute']}"
+                if newMessage != currentMessage:
+                    display(newMessage)
+                    currentMessage = newMessage
 
         timeSetting = ''
         key = keypad.getKey()
@@ -86,7 +96,10 @@ def loop(isEditing, currentMessage):
             if not isEditing:
                 isEditing = True
             elif not is_valid_military_time(timeSetting):
-                display('Invalid time, please clear & try again', currentMessage)
+                newMessage = 'Invalid time, please clear & try again'
+                if newMessage != currentMessage:
+                    display(newMessage)
+                    currentMessage = newMessage
             else:
                 # save time, end editing
                 minute = parse_minute(timeSetting)

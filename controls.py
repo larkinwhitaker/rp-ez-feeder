@@ -109,6 +109,7 @@ def loop(isEditing, timeSetting, currentMessage):
                 minute = parse_minute(timeSetting)
                 hour = parse_hour(timeSetting)
                 updateFeedingTime(hour, minute)
+                timeSetting = ''
                 isEditing = False
             
         elif key == 'B':

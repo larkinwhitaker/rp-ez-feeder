@@ -3,7 +3,7 @@ from settings import getSettings, updateFeedingTime, toggleEnabled, wasFedToday,
 import json
 
 settings = getSettings()
-print (json.dumps(settings))
+print (settings)
 
 toggleEnabled()
 updateFeedingTime(10,0)

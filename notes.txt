@@ -1,3 +1,5 @@
+https://github.com/larkinwhitaker/rp-ez-feeder
+
 controlling time:
 	ch 20 LCD1602 - screen output
 	ch 22 matrix keypad

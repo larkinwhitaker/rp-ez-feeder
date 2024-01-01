@@ -1,8 +1,10 @@
 # Installation
 
 In raspberry pi terminal:
+```
 cd ~
 git clone https://github.com/larkinwhitaker/rp-ez-feeder
+```
 
 # Files
 
@@ -12,18 +14,19 @@ These python code files came straight from the Freenove kit:
  - Keypad.py
 
 ## controls.py
-Test by running $ python controls.py in terminal
+Test by running `$ python controls.py` in terminal
 This code takes the input from the matrix keypad to control the feed time and display output to the LCD screen
 
 Controlling settings via keypad:
-A: select/change time
-B: cancel select/change time
-C: clear changing time input
-D: disable/re-enable
+- A: select/change time
+- B: cancel select/change time
+- C: clear changing time input
+- D: disable/re-enable
 
 
 ## feeder.py
-Test by running $ python feeder.py in terminal
+Test by running `$ python feeder.py` in terminal
+
 This code opens/closes the "lid" using a servo motor at the time set by the controls.py
 
 
@@ -32,23 +35,28 @@ This code opens/closes the "lid" using a servo motor at the time set by the cont
 
 ## settings.py
 This is just a set of helper commands to access/update the user's settings: the feed time, whether its enabled/disabled
+
 Note: These settings are stored in a file called settings.json
 
+---
 
 ## To auto-run this code when the raspberry pi turns on:
 
-### $ sudo nano /etc/xdg/autostart/ez-feeder-controls.desktop
+```
+$ sudo nano /etc/xdg/autostart/ez-feeder-controls.desktop
 [Desktop Entry]
 Type=Application
 Name=EZFeeder-Controls
 Exec=/usr/bin/python /home/pi/rp-ez-feeder/controls.py &
+```
 
-### $ sudo nano /etc/xdg/autostart/ez-feeder.desktop
+```
+$ sudo nano /etc/xdg/autostart/ez-feeder.desktop
 [Desktop Entry]
 Type=Application
 Name=EZFeeder
 Exec=/usr/bin/python /home/pi/rp-ez-feeder/feeder.py &
-
+```
 
 
 # Wiring

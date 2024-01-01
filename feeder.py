@@ -76,6 +76,7 @@ def loop():
             print('Already fed today')
             continue
 
+        # https://pimylifeup.com/raspberry-pi-pressure-pad/
         bowlHasFood = GPIO.input(fsrPin) > 0
         if bowlHasFood:
             print('Bowl already has food')

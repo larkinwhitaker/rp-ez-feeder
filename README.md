@@ -62,27 +62,27 @@ Exec=/usr/bin/python /home/pi/rp-ez-feeder/feeder.py &
 # Wiring
 
 ## Matrix keypad: (same wiring as tutorial ch 22, note resistors setup)
-1 (far left): GPIO18
-2: GPIO23
-3: GPIO24
-4: GPIO25
-5: MOSI
-6: GPIO22
-7: GPIO27
-8: GND
+- 1 (far left): GPIO18
+- 2: GPIO23
+- 3: GPIO24
+- 4: GPIO25
+- 5: MOSI
+- 6: GPIO22
+- 7: GPIO27
+- 8: GND
 
 ## LCD Screen: (tutorial ch 20 LCD1602)
-1: GND
-2: 5V
-3: SDA1
-4: SCL1
+- 1: GND
+- 2: 5V
+- 3: SDA1
+- 4: SCL1
 
 ## Servo (can go backwards - (tutorial ch 15):
-1: GPIO4
-2: 5V
-3: GND
+- 1: GPIO4
+- 2: 5V
+- 3: GND
 
 ## Force Sensitive Resistor:
 https://core-electronics.com.au/guides/force-sensitive-pads-raspberry-pi/
-1: 5V
-2: GPIO5 => 10k Resistor => GND
+- 1: 5V
+- 2: GPIO5 => 10k Resistor => GND

@@ -18,10 +18,12 @@ DEGREES_TO_OPEN_LID = 150
 SECONDS_LID_STAYS_OPEN = 3
 
 servoPin = 12
+fsrPin = 18
 
 def setup():
     global p
     GPIO.setmode(GPIO.BOARD)         # use PHYSICAL GPIO Numbering
+    GPIO.setup(fsrPin, GPIO.IN)      # Set fsrPin to INPUT mode
     GPIO.setup(servoPin, GPIO.OUT)   # Set servoPin to OUTPUT mode
     GPIO.output(servoPin, GPIO.LOW)  # Make servoPin output LOW level
 
@@ -49,9 +51,9 @@ def closeLid():
     
 def loop():
     while True:
-        settings = getSettings()
-        print(f'Current: {datetime.now()}')
+        print(f'Current time: {datetime.now()}')
 
+        settings = getSettings()
         if settings['feed_at_hour'] != None:
             minutes = settings['feed_at_minute']
             if minutes == 0:
@@ -74,8 +76,7 @@ def loop():
             print('Already fed today')
             continue
 
-        # https://pimylifeup.com/raspberry-pi-pressure-pad/
-        bowlHasFood = False
+        bowlHasFood = GPIO.input(fsrPin) > 0
         if bowlHasFood:
             print('Bowl already has food')
             updateLastFedDate()

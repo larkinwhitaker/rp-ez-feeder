@@ -40,11 +40,13 @@ def servoWrite(angle):      # make the servo rotate to specific angle, 0-180
 
 
 def openLid():
+    print('open lid')
     for angle in range(0, DEGREES_TO_OPEN_LID + 1, 1):   # make servo rotate from 0 to 180 deg
         servoWrite(angle)
         time.sleep(SERVO_DELAY_SEC)
 
 def closeLid():
+    print('close lid')
     for angle in range(DEGREES_TO_OPEN_LID, -1, -1): # make servo rotate from 180 to 0 deg
         servoWrite(angle)
         time.sleep(SERVO_DELAY_SEC)
@@ -58,12 +60,12 @@ def loop():
             minutes = settings['feed_at_minute']
             if minutes == 0:
                 minutes = '00'
-            print(f'Setting: {settings['feed_at_hour']}:{minutes}')
+            print(f"Setting: {settings['feed_at_hour']}:{minutes}")
         else:
             print(f'Setting: Not set')
 
 
-        if not settings.enabled:
+        if not settings['enabled']:
             print('Feeder disabled')
             continue
 
@@ -88,6 +90,7 @@ def loop():
         time.sleep(SECONDS_LID_STAYS_OPEN)
         
         closeLid()
+        p.stop()
 
         updateLastFedDate()
 

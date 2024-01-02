@@ -12,7 +12,10 @@ def getSettings():
 
 	if os.path.exists('settings.json'):
 		with open('settings.json', 'r') as file:
-		    settings = json.load(file)
+			try:
+			    settings = json.load(file)
+			except ValueError as e:
+				print('invalid settings')
 
 	return settings
 
@@ -40,12 +43,12 @@ def toggleEnabled():
 
 def wasFedToday():
 	settings = getSettings()
-	return settings['last_fed_date'] == datetime.now().date()
+	return settings['last_fed_date'] == str(datetime.now().date())
 
 
 def updateLastFedDate():
 	settings = getSettings()
-	settings['last_fed_date'] = datetime.now().date()
+	settings['last_fed_date'] = str(datetime.now().date())
 	updateSettings(settings)
 
 

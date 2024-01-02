@@ -6,12 +6,14 @@ cd ~
 git clone https://github.com/larkinwhitaker/rp-ez-feeder
 ```
 
-# Files
+### Follow quick steps in tutorial on 110-111 "Configure I2C and Install Smbus":
+ - Enable I2C
+ - Install I2C-Tools
+ - Install Smbus Module
 
-These python code files came straight from the Freenove kit:
- - Adafruit_LCD1602.py
- - PCF8574.py
- - Keypad.py
+---
+
+# Files
 
 ## controls.py
 Test by running `$ python controls.py` in terminal
@@ -31,12 +33,6 @@ This code opens/closes the "lid" using a servo motor at the time set by the cont
 
 
 ### Test the whole system by running both in 2 different terminal windows
-
-
-## settings.py
-This is just a set of helper commands to access/update the user's settings: the feed time, whether its enabled/disabled
-
-Note: These settings are stored in a file called settings.json
 
 ---
 
@@ -58,6 +54,20 @@ Name=EZFeeder
 Exec=/usr/bin/python /home/pi/rp-ez-feeder/feeder.py &
 ```
 
+---
+
+## settings.py
+This is just a set of helper commands to access/update the user's settings: the feed time, whether its enabled/disabled
+
+Note: These settings are stored in a file called settings.json
+
+
+These python code files came straight from the Freenove kit:
+ - Adafruit_LCD1602.py
+ - PCF8574.py
+ - Keypad.py
+
+---
 
 # Wiring
 

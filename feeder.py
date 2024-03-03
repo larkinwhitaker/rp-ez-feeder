@@ -53,8 +53,6 @@ def closeLid():
     
 def loop():
     while True:
-        print(f'Current time: {datetime.now()}')
-
         settings = getSettings()
         if settings['feed_at_hour'] != None:
             minutes = settings['feed_at_minute']

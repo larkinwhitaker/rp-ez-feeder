@@ -66,6 +66,7 @@ def loop():
         isTimeToFeed = datetime.now().hour == settings['feed_at_hour'] and datetime.now().minute == settings['feed_at_minute']
         if not isTimeToFeed:
             print('Not time to feed')
+            time.sleep(1)
             continue
 
         openLid()

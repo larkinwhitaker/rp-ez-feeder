@@ -69,6 +69,11 @@ def loop():
             time.sleep(1)
             continue
 
+        if wasFedToday():
+            print('Already fed today')
+            time.sleep(1)
+            continue
+
         openLid()
 
         time.sleep(SECONDS_LID_STAYS_OPEN)

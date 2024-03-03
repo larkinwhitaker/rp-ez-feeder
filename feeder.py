@@ -60,13 +60,13 @@ def loop():
             minutes = settings['feed_at_minute']
             if minutes == 0:
                 minutes = '00'
-            print(f"Setting: {settings['feed_at_hour']}:{minutes}")
+            # print(f"Setting: {settings['feed_at_hour']}:{minutes}")
         else:
-            print(f'Setting: Not set')
+            # print(f'Setting: Not set')
 
 
         if not settings['enabled']:
-            print('Feeder disabled')
+            # print('Feeder disabled')
             continue
 
         isTimeToFeed = datetime.now().hour == settings['feed_at_hour'] and datetime.now().minute == settings['feed_at_minute']
@@ -74,16 +74,16 @@ def loop():
             print('Not time to feed')
             continue
 
-        if wasFedToday():
-            print('Already fed today')
-            continue
+        # if wasFedToday():
+        #     print('Already fed today')
+        #     continue
 
         # https://pimylifeup.com/raspberry-pi-pressure-pad/
-        bowlHasFood = GPIO.input(fsrPin) > 0
-        if bowlHasFood:
-            print('Bowl already has food')
-            updateLastFedDate()
-            continue
+        # bowlHasFood = GPIO.input(fsrPin) > 0
+        # if bowlHasFood:
+        #     print('Bowl already has food')
+        #     updateLastFedDate()
+        #     continue
 
         openLid()
 
